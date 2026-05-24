@@ -4,81 +4,77 @@ using namespace std;
 
 class Car {
 public:
-	int id;
+	string model;
 	string name;
 	int age;
-	double* marks;
-	int class_number;
-	char class_letter;
-	bool alive;
+	int* price;
+	string country;
+	bool stock;
 
 	//default constructor / constructor without arguments
 	Car() {
 		cout << "Default costructor" << endl;
-		id = 0;
+		model = "";
 		name = "";
 		age = 0;
-		class_number = 0;
-		class_letter = '\0';
-		marks = new double [3] {10, 9, 7};
-		alive = false;
+		country = "";
+		price = new int [3] {10, 9, 7};
+		stock = false;
 	}
 
 	//canonical constructor / constructor with arguments
-	Car(int i, string nm, int ag, int number, char letter, bool a) {
+	Car(string i, string nm, int ag, string cn, bool a) {
 		cout << "Student canonical constructor" << endl;
-		id = i;
+		model = i;
 		name = nm;
 		age = ag;
-		class_number = number;
-		class_letter = letter;
-		marks = new double [3] {10, 9, 7};
-		alive = a;
+		country = cn;
+		price = new int [3] {15000, 35000, 75000};
+		stock = a;
 	}
 
 	//constructor with arguments
 	Car(int ag, string nm) {
 		cout << "Student constructor with arguments" << endl;
-		id = 0;
+		model = "";
 		name = nm;
 		age = ag;
-		class_number = 0;
-		class_letter = '\0';
-		marks = new double [3] {10, 9, 7};
-		alive = true;
+		country = "";
+		price = new int [3] {15000, 35000, 45000};
+		stock = true;
 	}
 
 	//copy-constructor / constructor with arguments
 	Car(const Car&car) {
 		cout << "Student copy-constructor" << endl;
-		id = car.id;
+		model = car.model;
 		name = car.name;
 		age = car.age;
-		class_number = car.class_number;
-		class_letter = car.class_letter;
-		marks = new double[3] {car.marks[0],
-			car.marks[1],
-			car.marks[2]};
-		alive = car.alive;
+		country = car.country;
+
+		price = new int[3] {car.price[0],
+			car.price[1],
+			car.price[2]};
+		stock = car.stock;
 	}
 
 	~Car() {
 		cout << "Student destructor" << endl;
-		if (marks != NULL) {
-			delete[] marks;
+		if (price != NULL) {
+			delete[] price;
 		}
 	}
 
 	string toString() {
 		string s = "Student: ";
-		s += "id = " + to_string(id);
+		s += "model = " +model;
 		s += ", name = " + name;
 		s += ", age = " + to_string(age);
-		s += ", class = " + to_string(class_number) + to_string(class_letter);
-		s += ", marks = {" + to_string(marks[0]) + ", " + to_string(marks[1])
-			+ ", " + to_string(marks[2]) + "}";
-		s += ", alive = ";
-		s += (alive ? "yes" : "no");
+		s += ", class = " +country ;
+		s += ", prices = {" + to_string(price[0]) + ", " + to_string(price[1])
+			+ ", " + to_string(price[2]) + "}";
+		s += ", stock = ";
+		s += (stock ? "yes" : "no");
 
 		return s;
 	}
