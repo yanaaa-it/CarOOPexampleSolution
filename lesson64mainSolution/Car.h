@@ -23,9 +23,9 @@ public:
 	}
 
 	//canonical constructor / constructor with arguments
-	Car(string i, string nm, int ag, string cn, bool a) {
+	Car(string model, string nm, int ag, string cn, bool a) {
 		cout << "Student canonical constructor" << endl;
-		model = i;
+		model = model;
 		name = nm;
 		age = ag;
 		country = cn;
