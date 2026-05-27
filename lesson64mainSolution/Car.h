@@ -3,38 +3,33 @@
 using namespace std;
 
 class Car {
-public:
+private:
 	string model;
 	string name;
 	int age;
 	int* price;
 	string country;
 	bool stock;
+	
+public:
+	
 
 	//default constructor / constructor without arguments
-	Car() {
-		cout << "Default costructor" << endl;
-		model = "";
-		name = "";
-		age = 0;
-		country = "";
-		price = new int [3] {10, 9, 7};
-		stock = false;
-	}
+	Car::Car(): Car("", "No name", 10, "", true) {}
 
 	//canonical constructor / constructor with arguments
-	Car(string model, string nm, int ag, string cn, bool a) {
+	Car::Car(string model, string nm, int ag, string cn, bool a) {
 		cout << "Student canonical constructor" << endl;
-		model = model;
-		name = nm;
-		age = ag;
+		this->model = model;
+		this->name = nm;
+		this->age = ag;
 		country = cn;
 		price = new int [3] {15000, 35000, 75000};
 		stock = a;
 	}
 
 	//constructor with arguments
-	Car(int ag, string nm) {
+	Car::Car(int ag, string nm): Car() {
 		cout << "Student constructor with arguments" << endl;
 		model = "";
 		name = nm;
@@ -45,9 +40,9 @@ public:
 	}
 
 	//copy-constructor / constructor with arguments
-	Car(const Car&car) {
+	Car::Car(const Car&car): Car(car.model, car.name,car.age,car.country,car.price,car.stock) {
 		cout << "Student copy-constructor" << endl;
-		model = car.model;
+		/*model = car.model;
 		name = car.name;
 		age = car.age;
 		country = car.country;
@@ -55,7 +50,15 @@ public:
 		price = new int[3] {car.price[0],
 			car.price[1],
 			car.price[2]};
-		stock = car.stock;
+		stock = car.stock;*/
+		if (car.price != NULL && car.count > 0) {
+			count = car.count;
+			price = new int[count];
+			for (int i = 0; i < count; i++)
+			{
+				price[i] = car.price[];
+			}
+		}
 	}
 
 	~Car() {
